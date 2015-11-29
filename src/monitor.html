@@ -1,0 +1,32 @@
+<template>
+  <require from="notification"></require>
+  
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div>Your Id : ${myId}</div>
+    <div class="col-xs-4">
+      <input type="text" class="form-control" value.bind="peerId" placeholder="ID入力"/>
+    </div>
+    <button type="button" class="btn btn-primary" click.trigger="call()"><i class="fa fa-undo fa-1x"></i> Call</button>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <video id="peer-video" class="col-xs-12 col-sm-12 col-md-12" src="${connection.peerVideo}" style="display: ${videoDisplay};" autoplay></video>
+    <canvas id="capture-canvas" class="col-xs-12 col-sm-12 col-md-12" style="display: ${canvasDisplay};"></canvas>
+    
+    <textarea class="form-control" rows="1" placeholder="メッセージ入力" value.bind="message"></textarea>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="reset()"><i class="fa fa-undo fa-1x"></i> Reset</button>
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="live()"><i class="fa fa-pencil fa-1x"></i> Live</button>
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="rec()"><i class="fa fa-video-camera fa-1x"></i> Rec</button>
+      <!--
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="stop()"><i class="fa fa-stop fa-1x"></i> Stop</button>
+      --->
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="snap()"><i class="fa fa-camera fa-1x"></i> Snap</button>
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="image()"><i class="fa fa-folder-open fa-1x"></i> Image</button>
+      <button type="button" class="btn btn-primary col-sm-2" click.trigger="send()"><i class="fa fa-share fa-1x"></i> Send</button>
+    </div>
+  </div>
+  <div class="right-panel col-xs-12 col-sm-6 col-md-6">
+    <notification img.bind="recieveImg" message.bind="recieveMessage" imgDisplay.bind="imgDisplay"></notification>
+    <video id="my-video" class="col-xs-12 col-sm-12 col-md-12" src="${connection.myVideo}" autoplay></video>
+  </div>
+</template>
